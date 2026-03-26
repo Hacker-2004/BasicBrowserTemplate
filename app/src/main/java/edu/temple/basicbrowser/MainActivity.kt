@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         goButton.setOnClickListener {
             val userInput = urlEditText.text.toString()
             val formatUrls = formatUrl(userInput)
+
+            urlEditText.setText(formatUrls)
             webView.loadUrl(formatUrls)
         }
 
