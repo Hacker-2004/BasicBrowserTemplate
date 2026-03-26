@@ -25,7 +25,8 @@ class MainActivity : AppCompatActivity() {
 
         goButton.setOnClickListener {
             val userInput = urlEditText.text.toString()
-            webView.loadUrl(userInput)
+            val formatUrls = formatUrl(userInput)
+            webView.loadUrl(formatUrls)
         }
 
         // Allow your browser to intercept hyperlink clicks
@@ -35,5 +36,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun formatUrl(url: String): String{
+        return if (url.startsWith("http://") || url.startsWith("https://")){
+            url
+        }else{
+            "https://$url"
+        }
     }
 }
